@@ -1,0 +1,62 @@
+---
+import Link from "./Link.astro"
+
+type Item = {
+	styleClass: string;
+	value: string;
+};
+
+const styleClasses = {
+	str: "text-pink-400",
+	int: "text-cyan-400",
+};
+
+const items: Item[] = [
+	{ value: "'Programmer'", styleClass: styleClasses.str },
+	{ value: "'Student'", styleClass: styleClasses.str },
+	{ value: "16", styleClass: styleClasses.int },
+];
+
+const urls = {
+    github: import.meta.env.PUBLIC_GITHUB_URL,
+    discord: import.meta.env.PUBLIC_DISCORD_URL,
+}
+
+---
+
+<div class="flex flex-col p-3 border border-fuchsia-400 rounded max-w-full sm:max-w-xl hover:border-fuchsia-300">
+    <div class="text-2xl sm:text-3xl md:text-5xl font-bold leading-tight">
+    Hello, I am <span class="text-fuchsia-400 animate-flicker drop-shadow-[0_0_6px_#facc15] hover:text-fuchsia-600 pixelify-sans">Aki</span>
+    </div>
+
+    <div class="text-sm sm:text-base md:text-xl text-neutral-300 flex flex-wrap items-center gap-1">
+    <span class="text-fuchsia-400">[</span>
+    {
+        items.map((v, i) => (
+        <span>
+            <span class={v.styleClass}>{v.value}</span>
+            {i < items.length - 1 && <span>,</span>}
+        </span>
+        ))
+    }
+    <span class="text-fuchsia-400">]</span>
+    </div>
+
+    <p class="text-xs sm:text-sm md:text-base text-white">
+    Hello, my name is John or Aki, and I am a technology fanatic who enjoys tinkering with tech. 
+    Right now, I'm experimenting with a physics engine and having fun discovering what it can do!
+    </p>
+
+    <div class="text-cyan-400 text-lg sm:text-xl font-semibold">== Connections ==</div>
+    <ul class="text-xs sm:text-sm md:text-base text-white space-y-1 pl-2 list-none">
+    <li>
+        GitHub: 
+        <Link label="github.com/akithepriest" href={urls.github}/>
+    </li>
+    <li>
+        Discord: 
+        <Link label="@akithepriest" href={urls.discord}/>
+    </li>
+    </ul>
+</div>
+</div>

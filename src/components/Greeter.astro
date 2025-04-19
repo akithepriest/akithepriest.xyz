@@ -1,0 +1,29 @@
+---
+import Link from "./Link.astro"
+const repoUrl = import.meta.env.PUBLIC_GITHUB_URL+ "/akithepriest.xyz";
+---
+
+<div class="flex flex-col justify-starttext-white font-mono p-4 gap-4">
+    <div class="text-lg">
+        <p class="text-base sm:text-lg">
+        Welcome to <span class="text-amber-400">Aki's Shell</span> (v0.1-experiment)
+        </p>
+
+        <p class="text-sm sm:text-base">
+        - Repository:
+        <Link label="github.com" href={repoUrl}/>
+        </p>
+    </div>
+
+    <p class="text-xs sm:text-sm text-neutral-400 italic">
+        * This is an experimental version, and things are subject to change.
+    </p>
+
+    <div class="flex items-center gap-2 text-xs sm:text-sm text-neutral-400">
+        <p class="text-fuchsia-400">
+          guest@akithepriest 
+          <span class="text-white">@ {new Date().toLocaleTimeString()}</span>
+          <span class="text-white"> $</span>
+        </p>
+        <span>cat ~/.profile</span>
+      </div>
